@@ -3,7 +3,6 @@
 
 import os
 import sys
-import logging
 
 import re
 
@@ -27,6 +26,7 @@ parser.add_option("-L", "--log-level", dest="log_level", help="log level(ignored
 parser.set_defaults(output_directory=None, limit=None, log_level="info", invert=False, url=None, content_type=None, type=None)
 
 def parse_http_response(record):
+    import logging
     message = ResponseMessage(RequestMessage())
     remainder = message.feed(record.content[1])
     message.close()
